@@ -9,10 +9,10 @@ export default function Node({data}: { data: Data }) {
         setActiveBlock(block);
     };
     useEffect(() => {
-        if (!data.blockchain.some(block => block.hash == activeBlock?.hash)) {
+        if (activeBlock && !data.blockchain.some(block => block.hash == activeBlock.hash)) {
             setActiveBlock(data.blockchain[0]);
         }
-    }, [data]);
+    }, [activeBlock, data]);
     return (
         <div className="container">
             <div className="row-container">
@@ -24,9 +24,7 @@ export default function Node({data}: { data: Data }) {
                 </div>
                 <div className="row-container no-gap">
                     <label className="text bg-blue-400">Num of Miners</label>
-                    <button className="btn">-</button>
                     <div className="text">{data.miners.length}</div>
-                    <button className="btn">+</button>
                 </div>
             </div>
 

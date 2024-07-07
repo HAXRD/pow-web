@@ -1,5 +1,5 @@
 "use client";
-import {Data, dataSrcs, dummy_data} from "@/app/data/data";
+import {Data, dataSrcs} from "@/app/data/data";
 import Node from "@/app/components/node";
 import {useEffect, useState} from "react";
 
@@ -18,6 +18,7 @@ export default function Home() {
                 newData.push(response.data);
             }
             setData(newData);
+            setDifficulty(newData[0].difficulty);
         } catch (error) {
             console.error("Error fetching data: ", error);
         }
@@ -40,7 +41,9 @@ export default function Home() {
             // console.log(result)
         } catch (error) {
             console.error('Error resetting: ', error);
+            alert("Error occurred while resetting, try resetting again");
         }
+        alert("Reset successfully!");
     }
 
     return (
@@ -53,9 +56,7 @@ export default function Home() {
                     </button>
                     <div className="row-container no-gap">
                         <label className="text bg-blue-400">Difficulty</label>
-                        <button className="btn">-</button>
                         <div className="text">{difficulty}</div>
-                        <button className="btn">+</button>
                     </div>
                     {
                         data.map(item => (
