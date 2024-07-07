@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import "@/styles/mordern-normalize.css"
+import "@/styles/utils.css";
 import "@/styles/style.css";
 
 export const metadata: Metadata = {
